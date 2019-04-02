@@ -1,0 +1,90 @@
+﻿.colorblanco{
+    color: white;
+}
+.color1{
+    background:#006567;
+}
+.color1borde{
+    background:#006567;
+    border-radius:10px;
+}
+.titulo{
+    background: #72d8e6;
+    border-radius: 8px;
+    display: inline-block;
+    width: 235px;
+}
+.centrar{
+    display:table;
+    margin:0 auto;
+}
+li a{
+    color:white;
+}
+a:hover{
+        background-color:#006567;
+        color:#006567;
+}   
+.margenes{
+    margin-top:20px;
+    background: #62D3E2;
+    margin-left:6%;
+    border-radius: 10px;
+    height: 300px;
+}
+.margenes1{
+    padding-top:20px;       
+    margin-left:7%;
+    
+}
+.margenes2{
+    padding-top: 20px;
+    background: #006567;
+    margin-left: 7%;
+    border-radius: 10px;
+    padding-bottom:10px;
+    margin-bottom:50px;
+}
+.margenes3{
+    padding-top: 20px;
+    margin-bottom:50px;
+    background: #006567;
+    border-radius: 10px;
+    padding-bottom:10px;
+    margin-left:6.4%;
+}
+.margenes4{
+    margin-left:5.2%;
+    padding-top: 20px;
+    background: #006567;
+    border-radius: 10px;
+    padding-bottom:10px;
+    margin-bottom:50px;
+
+}
+.form1{
+    height:800px;
+    background: #f1f1f9;
+    border-radius: 10px;
+    border: 2px solid #006567;
+}
+.form2{
+    width: 800px;
+    background: #006567;
+    border-radius: 5px;
+    height: 650px;
+    display: table;
+    margin: 0 auto;
+}
+.margenes2:hover{
+    opacity:0.8;
+}
+.margenes3:hover{
+    opacity:0.8;
+}
+.margenes4:hover{
+    opacity:0.8;
+}
+.imagentam{
+    width:150px;
+}
