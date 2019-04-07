@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using GRH.Models;
 
 namespace GRH.Controllers.Informe
 {
@@ -13,9 +14,18 @@ namespace GRH.Controllers.Informe
         {
             return View();
         }
-        public ActionResult EmpleadosActivos()
+        public ActionResult EmpleadosActivos(String Nombre_Empleado)
         {
-            return View();
+            using (GestionRecursosHumanosEntities db = new GestionRecursosHumanosEntities())
+            {
+                var emple = from s in db.empleado select s;
+                if (!String.IsNullOrEmpty(Nombre_Empleado))
+                {
+                    emple = emple.Where(j => j.nombre.Contains(Nombre_Empleado));
+                }
+                return View(emple.ToList());
+            }
+
         }
         public ActionResult EmpleadosInactivos()
         {

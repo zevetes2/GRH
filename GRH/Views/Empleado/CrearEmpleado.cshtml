@@ -1,9 +1,31 @@
-﻿@{
+﻿@model GRH.Models.empleado
+
+@{
     ViewBag.Title = "EmpleadoIndex";
-    
+
 }
-<link href="~/Content/estilo.css" type="text/css" rel="stylesheet"/>
-<div class="container">     
+@{
+    List<SelectListItem> listItems = new List<SelectListItem>();
+    listItems.Add(new SelectListItem
+    {
+        Text = "Exemplo1",
+        Value = "Exemplo1"
+    });
+    listItems.Add(new SelectListItem
+    {
+        Text = "Exemplo2",
+        Value = "Exemplo2",
+        Selected = true
+    });
+    listItems.Add(new SelectListItem
+    {
+        Text = "Exemplo3",
+        Value = "Exemplo3"
+    });
+}
+
+<link href="~/Content/estilo.css" type="text/css" rel="stylesheet" />
+<div class="container">
     <nav class="navbar navbar-default" style="margin-bottom: 3px;">
         <div class="container-fluid color1borde">
             <div class="navbar-header">
@@ -18,44 +40,112 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="~/Empleado/CrearEmpleado" style="color:#000; background:#62d3e2;">Crear Empleado<span class="sr-only">(current)</span></a></li>
-                    <li><a href="~/Empleado/EditarEmpleado" style="color:white;">Editar Empleado</a></li>
-                    <li><a href="~/Empleado/EliminarEmpleado" style="color:white;">Eliminar Empleado</a></li>
+                    <li><a href="~/Empleado/IndexEmpleado" style="color:white;">Lista de Empleados</a></li>
                 </ul>
             </div>
         </div>
     </nav>
-    <div class="container form1">
-        <center><h3 class="titulo">Crear Empleado</h3></center>
-    </div>
+    @using (Html.BeginForm("CrearEmpleado", "Empleado", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        <div class="container form1">
+            <center><h3 class="titulo">Crear Empleado</h3></center>
+            <div class="form2">
+                <div>
+                    @Html.LabelFor(d => d.codigo_empleado, new { @class = "colorblanco" })
+                    @Html.TextBoxFor(d => d.codigo_empleado, "", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(d => d.codigo_empleado, null, new { @class = "alert" })
+                </div>
+                <div>
+                    @Html.LabelFor(d => d.nombre, new { @class = "colorblanco" })
+                    @Html.TextBoxFor(d => d.nombre, "", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(d => d.nombre, null, new { @class = "alert" })
+
+                </div>
+                <div>
+                    @Html.LabelFor(d => d.apellido, new { @class = "colorblanco" })
+                    @Html.TextBoxFor(d => d.apellido, "", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(d => d.apellido, null, new { @class = "alert" })
+                </div>
+                <div>
+                    @Html.LabelFor(d => d.telefono, new { @class = "colorblanco" })
+                    @Html.TextBoxFor(d => d.telefono, "", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(d => d.telefono, null, new { @class = "alert" })
+                </div>
+                <div>
+                    @Html.LabelFor(d => d.departamento, new { @class = "colorblanco" })
+                    @Html.DropDownList("departamento", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(d => d.departamento, null, new { @class = "alert" })
+                </div>
+                <div>
+                    @Html.LabelFor(d => d.cargo, new { @class = "colorblanco" })
+                    @Html.DropDownList("cargo", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(d => d.cargo, null, new { @class = "alert" })
+                </div>
+                <div>
+                    @Html.LabelFor(d => d.fecha_ingreso, new { @class = "colorblanco" })
+                    @Html.TextBoxFor(d => d.fecha_ingreso, "", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(d => d.fecha_ingreso, null, new { @class = "alert" })
+                </div>
+                <div>
+                    @Html.LabelFor(d => d.salario, new { @class = "colorblanco" })
+                    @Html.TextBoxFor(d => d.salario, "", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(d => d.salario, null, new { @class = "alert" })
+                </div>
+                @Html.LabelFor(model => model.estatus, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.estatus, new { htmlAttributes = new { @Value = 'A' } })
+                        @*@Html.EditorFor(model => model.estatus)*@
+                        @*@Html.DropDownListFor(model => model.estatus, listItems, "-- Select Status --")*@
+                        @Html.ValidationMessageFor(model => model.estatus, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div>
+                    @Html.LabelFor(d => d.estatus, new { @class = "colorblanco" })
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.estatus, new { htmlAttributes = new { @Value = "Activo" } })
+                        @Html.ValidationMessageFor(d => d.estatus, null, new { @class = "alert" }) 
+                    </div>
+                    @*@Html.DropDownListFor(d => d.estatus, new SelectList(Enum.GetValues(typeof(Estado))), "Seleciona un genero", new { @class = "form-control" })*@
+                    
+                </div>
+                <div>
+                    <input type="submit" value="Guardar" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    }
 </div>
+
 @*<div class="row form1">
-    <div class="">
-        <div role="tabpanel">
-            <ul class="nav nav-tabs" role="tablist">
-                <li role="presentation" class="active color1"><a href="#seccion1" aria-controls="seccion1" data-toggle="tab" role="tab" onclick="t1()">Crear</a></li>
-                <li role="presentation" class="color1"><a href="#seccion2" aria-controls="seccion2" data-toggle="tab" role="tab" onclick="t2()">Editar</a></li>
-                <li role="presentation" class="color1"><a href="#seccion3" aria-controls="seccion3" data-toggle="tab" role="tab" onclick="t3()">Eliminar</a></li>
-            </ul>
-            <div class="tab-content">
-                <div role="tabpanel" class="tab-pane active" id="seccion1">
-                    <center><h3 class="titulo">Crear Empleado</h3></center>
-                    <div class="form2">
+        <div class="">
+            <div role="tabpanel">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active color1"><a href="#seccion1" aria-controls="seccion1" data-toggle="tab" role="tab" onclick="t1()">Crear</a></li>
+                    <li role="presentation" class="color1"><a href="#seccion2" aria-controls="seccion2" data-toggle="tab" role="tab" onclick="t2()">Editar</a></li>
+                    <li role="presentation" class="color1"><a href="#seccion3" aria-controls="seccion3" data-toggle="tab" role="tab" onclick="t3()">Eliminar</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="seccion1">
+                        <center><h3 class="titulo">Crear Empleado</h3></center>
+                        <div class="form2">
 
+                        </div>
                     </div>
-                </div>
-                <div role="tabpanel" class="tab-pane" id="seccion2">
-                    <center><h3 class="titulo">Editar Empleado</h3></center>
-                    <div class="form2">
+                    <div role="tabpanel" class="tab-pane" id="seccion2">
+                        <center><h3 class="titulo">Editar Empleado</h3></center>
+                        <div class="form2">
 
+                        </div>
                     </div>
-                </div>
-                <div role="tabpanel" class="tab-pane" id="seccion3">
-                    <center><h3 class="titulo">Eliminar Empleado</h3>  </center>
-                    <div class="form2">
+                    <div role="tabpanel" class="tab-pane" id="seccion3">
+                        <center><h3 class="titulo">Eliminar Empleado</h3>  </center>
+                        <div class="form2">
 
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>*@
+    </div>*@

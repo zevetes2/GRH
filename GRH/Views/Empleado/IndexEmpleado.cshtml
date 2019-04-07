@@ -1,6 +1,6 @@
-﻿@model IEnumerable<GRH.Models.empleado>
+﻿
 @{
-    ViewBag.Title = "EmpleadosActivos";
+    ViewBag.Title = "IndexEmpleado";
 }
 <link href="~/Content/estilo.css" type="text/css" rel="stylesheet" />
 <div class="container">
@@ -13,23 +13,18 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" style="color:white;" href="~/Informe/InformeIndex">Informe</a>
+                <a class="navbar-brand" style="color:white;" href="#">Empleados</a>
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="~/Informe/EmpleadosActivos" style="color:#000; background:#62d3e2;">Empleados Activos<span class="sr-only">(current)</span></a></li>
-                    <li><a href="~/Informe/EmpleadosInactivos" style="color:white;">Empleados Inactivos</a></li>
-                    <li><a href="~/Informe/Departamentos" style="color:white;">Departamentos</a></li>
-                    <li><a href="~/Informe/Cargos" style="color:white;">Cargos</a></li>
-                    <li><a href="~/Informe/EntradaEmpleados" style="color:white;">Entrada de empleados</a></li>
-                    <li><a href="~/Informe/SalidasEmpleados" style="color:white;">Salida de empleados</a></li>
-                    <li><a href="~/Informe/Permisos" style="color:white;">Permisos</a></li>
+                    <li><a href="~/Empleado/CrearEmpleado" style="color:white;">Crear Empleado</a></li>
+                    <li class="active"><a href="~/Empleado/IndexEmpleado" style="color:#000; background:#62d3e2;">Lista de Empleados<span class="sr-only">(current)</span></a></li>
                 </ul>
             </div>
         </div>
     </nav>
     <div class="container form1">
-        <center><h3 class="titulo">Empleados Activos</h3></center>
+        <center><h3 class="titulo">Lista de Empleados</h3></center>
         <table class="table">
             <tr>
                 <th>Id</th>
@@ -56,10 +51,10 @@
                     <td>@elemento.fecha_ingreso</td>
                     <td>@elemento.salario</td>
                     <td>@elemento.estatus</td>
-                    @*<td>
+                    <td>
                         <a class="btn btn-default" href="~/Contacto/EditarContacto/@elemento.id_contacto">Editar</a>
                         <a class="btn btn-danger" href="~/Contacto/EliminarContacto/@elemento.id_contacto">Eliminar</a>
-                    </td>*@
+                    </td>
                 </tr>
             }
         </table>

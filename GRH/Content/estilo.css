@@ -63,16 +63,17 @@ a:hover{
 
 }
 .form1{
-    height:800px;
+    height:1000px;
     background: #f1f1f9;
     border-radius: 10px;
     border: 2px solid #006567;
 }
 .form2{
+    padding: 20px;
     width: 800px;
     background: #006567;
     border-radius: 5px;
-    height: 650px;
+    height: 750px;
     display: table;
     margin: 0 auto;
 }

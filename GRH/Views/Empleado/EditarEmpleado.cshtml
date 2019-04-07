@@ -1,4 +1,4 @@
-﻿
+﻿@model GRH.Models.empleado
 @{
     ViewBag.Title = "EditarEmpleado";
 }
@@ -27,6 +27,64 @@
     </nav>
     <div class="container form1">
         <center><h3 class="titulo">Editar Empleado</h3></center>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="container form1">
+                <center><h3 class="titulo">Crear Empleado</h3></center>
+                <div class="form2">
+                    <div>
+                        @Html.LabelFor(d => d.codigo_empleado, new { @class = "colorblanco" })
+                        @Html.TextBoxFor(d => d.codigo_empleado, "", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(d => d.codigo_empleado, null, new { @class = "alert" })
+                    </div>
+                    <div>
+                        @Html.LabelFor(d => d.nombre, new { @class = "colorblanco" })
+                        @Html.TextBoxFor(d => d.nombre, "", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(d => d.nombre, null, new { @class = "alert" })
+
+                    </div>
+                    <div>
+                        @Html.LabelFor(d => d.apellido, new { @class = "colorblanco" })
+                        @Html.TextBoxFor(d => d.apellido, "", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(d => d.apellido, null, new { @class = "alert" })
+                    </div>
+                    <div>
+                        @Html.LabelFor(d => d.telefono, new { @class = "colorblanco" })
+                        @Html.TextBoxFor(d => d.telefono, "", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(d => d.telefono, null, new { @class = "alert" })
+                    </div>
+                    <div>
+                        @Html.LabelFor(d => d.departamento, new { @class = "colorblanco" })
+                        @Html.DropDownList("departamento", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(d => d.departamento, null, new { @class = "alert" })
+                    </div>
+                    <div>
+                        @Html.LabelFor(d => d.cargo, new { @class = "colorblanco" })
+                        @Html.DropDownList("cargo", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(d => d.cargo, null, new { @class = "alert" })
+                    </div>
+                    <div>
+                        @Html.LabelFor(d => d.fecha_ingreso, new { @class = "colorblanco" })
+                        @Html.TextBoxFor(d => d.fecha_ingreso, "", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(d => d.fecha_ingreso, null, new { @class = "alert" })
+                    </div>
+                    <div>
+                        @Html.LabelFor(d => d.salario, new { @class = "colorblanco" })
+                        @Html.TextBoxFor(d => d.salario, "", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(d => d.salario, null, new { @class = "alert" })
+                    </div>
+                    <div>
+                        @*@Html.LabelFor(d => d.estatus, new { @class = "colorblanco" })
+                        @Html.DropDownListFor(d => d.estatus, new SelectList(Enum.GetValues(typeof(Estado))), "Seleciona un genero", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(d => d.estatus, null, new { @class = "alert" })*@
+                    </div>
+                    <div>
+                        <input type="submit" value="Guardar" class="btn btn-primary" />
+                    </div>
+                </div>
+            </div>
+        }
     </div>
 </div>
 
